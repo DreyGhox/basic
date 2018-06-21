@@ -6,12 +6,21 @@
 package emporio.webcomponet.basic.model;
 
 import java.util.ArrayList;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Drako
  */
+@Entity
+@Table (name = "Marca")
 public class MarcaModelo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idmarca;
    private String nombremarca;
    private String detalle;
@@ -56,69 +65,5 @@ public class MarcaModelo {
         this.detalle = detalle;
     }
    
-    public boolean nuevaMarca(MarcaModelo nuevaMarca){
-        
-        int id = 0;
-        
-        if(!marcas.isEmpty()){
-            for(MarcaModelo marca : marcas){
-                if(marca.getIdmarca() > id){
-                    id = marca.getIdmarca();
-                }
-            }
-        }
-        
-        id++;
-        marcas.add(new MarcaModelo(id, nuevaMarca.getNombremarca(), nuevaMarca.getDetalle()));
-        return true;
-    }
-    
-    public MarcaModelo buscarMarca(int idMarcaBuscada){
-        
-        MarcaModelo marcaEncontrada = null;
-        
-        if(!marcas.isEmpty()){
-            
-            for(MarcaModelo marca : marcas){
-                if(marca.getIdmarca() == idMarcaBuscada){
-                    marcaEncontrada = marca;
-                }
-            }
-        }
-        
-        return marcaEncontrada;
-    }
-    
-    public MarcaModelo editarMarca(int idMarca, MarcaModelo marcaEditar){
-        
-        MarcaModelo marcaEditada = null;
-        
-        if(!marcas.isEmpty()){
-            for(MarcaModelo marca : marcas){
-                if(marca.getIdmarca() == idMarca){
-                    marca.setNombremarca(marcaEditar.getNombremarca());
-                    marca.setDetalle(marcaEditar.getDetalle());
-                    
-                    marcaEditada = marca;
-                }
-            }
-        }
-        
-        return marcaEditada;
-    }
-    
-    public boolean eliminarMarca(int id){
-        MarcaModelo marcaEliminada = null;
-        
-        if(!marcas.isEmpty()){
-            for(MarcaModelo marca : marcas){
-                if(marca.getIdmarca() == idmarca){
-                    marcaEliminada = marca;
-                }
-            }
-        }
-        
-        marcas.remove(marcaEliminada);
-        return true;
-    }
+   
 }

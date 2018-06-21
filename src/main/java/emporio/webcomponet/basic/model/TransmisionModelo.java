@@ -6,12 +6,23 @@
 package emporio.webcomponet.basic.model;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table (name = "Transmision")
+
 public class TransmisionModelo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idtransmision;
     private String nombretransmision;
     private String detalle;
@@ -56,70 +67,6 @@ public class TransmisionModelo {
         this.detalle = detalle;
     }
     
-    public boolean nuevaTransmision (TransmisionModelo nuevaTransmision){
-        
-        int id = 0;
-        
-        if(!trans.isEmpty()){
-            for(TransmisionModelo tran : trans){
-                if(tran.getIdtransmision() > id){
-                    id = tran.getIdtransmision();
-                }
-            }
-        }
-        
-        id++;
-        
-        trans.add(new TransmisionModelo(id, nuevaTransmision.getNombretransmision(), nuevaTransmision.getDetalle()));
-        return true;
-    }
-    
-    public TransmisionModelo buscarTransmision(int idTransmisionBuscado){
-        
-        TransmisionModelo transmisionEncontrada = null;
-        
-        if(!trans.isEmpty()){
-            for(TransmisionModelo tran : trans){
-                if(tran.getIdtransmision() == idTransmisionBuscado){
-                    transmisionEncontrada = tran;
-                }
-                
-            }
-        }
-        return transmisionEncontrada;
-    }
-    
-    public TransmisionModelo editarTransmision(int idTransmision, TransmisionModelo transmisionEditar){
-        
-        TransmisionModelo transmisionEditada = null;
-        
-        if(!trans.isEmpty()){
-            for(TransmisionModelo tran : trans){
-              if(tran.getIdtransmision() == idTransmision){
-                  tran.setNombretransmision(transmisionEditar.getNombretransmision());
-                  tran.setDetalle(transmisionEditar.getDetalle());
-                  
-                  transmisionEditada = tran;
-              }  
-            }
-        }
-        return transmisionEditada;
-    }
-    
-    public boolean eliminarTransmision(int id){
-        
-        TransmisionModelo transmisionEliminada = null;
-        
-        if(!trans.isEmpty()){
-            for(TransmisionModelo tran : trans){
-             if(tran.getIdtransmision() == idtransmision){
-                 transmisionEliminada = tran;
-             }   
-            }
-        }
-        
-        trans.remove(transmisionEliminada);
-        return true;
-    }
+   
 }
 
