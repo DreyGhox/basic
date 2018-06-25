@@ -7,10 +7,8 @@ package emporio.webcomponet.basic.controler;
 
 import emporio.webcomponet.basic.model.MarcaModelo;
 import emporio.webcomponet.basic.repository.MarcaRepository;
-import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

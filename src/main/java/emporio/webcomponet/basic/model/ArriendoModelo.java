@@ -11,90 +11,215 @@ package emporio.webcomponet.basic.model;
  */
 public class ArriendoModelo {
 
-    private int idarriendo;
-    private int fechaarriendo;
-    private int horaarriendo;
-    private PersonaModelo vendedor;
-    private PersonaModelo cliente;
-     private VehiculoModelo vehiculo;
-      private MedioPagoModel mediopago;
+ 
+    private int idVersion;
+    private String nombre;
+    private String detalle;
+    private int puerta;
+    private int pasajeros;
+    private float cilindrada;
+    private float rendidmiento;
+    private int capacidadMaletero;
+    private int airbag;
+    private boolean aireAcondicionado;
+    private boolean cierreCentralizado;
+    private boolean alzaVidriosElectricos;
+    private boolean camaraRetroceso;
+    private CombustibleModelo Combustible;
+    private CarroceriaModelo Carroceria;
+    private TransmisionModelo Transmision;
+    private TraccionModelo Traccion;
+    private ModeloModelo Modelo;
 
-    public int getIdarriendo() {
-        return idarriendo;
+    public int getIdVersion() {
+        return idVersion;
     }
 
-    public void setIdarriendo(int iddevolucion) {
-        this.idarriendo = idarriendo;
+    public void setIdVersion(int idVersion) {
+        this.idVersion = idVersion;
     }
 
-    public int getFechadevolucion() {
-        return fechaarriendo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setFechaarriendo(int fechaarriendo) {
-        this.fechaarriendo = fechaarriendo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getHoraarriendo() {
-        return horaarriendo;
+    public String getDetalle() {
+        return detalle;
     }
 
-    public void setHoraarriendo(int horadevolucion) {
-        this.horaarriendo = horadevolucion;
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
 
-    public PersonaModelo getVendedor() {
-        return vendedor;
+    public int getPuerta() {
+        return puerta;
     }
 
-    public void setVendedor(PersonaModelo vendedor) {
-        this.vendedor = vendedor;
+    public void setPuerta(int puerta) {
+        this.puerta = puerta;
     }
 
-    public PersonaModelo getCliente() {
-        return cliente;
+    public int getPasajeros() {
+        return pasajeros;
     }
 
-    public void setCliente(PersonaModelo cliente) {
-        this.cliente = cliente;
+    public void setPasajeros(int pasajeros) {
+        this.pasajeros = pasajeros;
     }
 
-    public VehiculoModelo getVehiculo() {
-        return vehiculo;
+    public float getCilindrada() {
+        return cilindrada;
     }
 
-    public void setVehiculo(VehiculoModelo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setCilindrada(float cilindrada) {
+        this.cilindrada = cilindrada;
     }
 
-    public MedioPagoModel getMediopago() {
-        return mediopago;
+    public float getRendidmiento() {
+        return rendidmiento;
     }
 
-    public void setMediopago(MedioPagoModel mediopago) {
-        this.mediopago = mediopago;
+    public void setRendidmiento(float rendidmiento) {
+        this.rendidmiento = rendidmiento;
     }
 
-    public ArriendoModelo() {
+    public int getCapacidadMaletero() {
+        return capacidadMaletero;
     }
 
-    public ArriendoModelo(int fechaarriendo, int horaarriendo, PersonaModelo vendedor, PersonaModelo cliente, VehiculoModelo vehiculo, MedioPagoModel mediopago) {
-        this.fechaarriendo = fechaarriendo;
-        this.horaarriendo = horaarriendo;
-        this.vendedor = vendedor;
-        this.cliente = cliente;
-        this.vehiculo = vehiculo;
-        this.mediopago = mediopago;
+    public void setCapacidadMaletero(int capacidadMaletero) {
+        this.capacidadMaletero = capacidadMaletero;
     }
 
-    private ArriendoModelo(int idarriendo, int fechaarriendo, int horaarriendo, PersonaModelo vendedor, PersonaModelo cliente, VehiculoModelo vehiculo, MedioPagoModel mediopago) {
-        this.idarriendo = idarriendo;
-        this.fechaarriendo = fechaarriendo;
-        this.horaarriendo = horaarriendo;
-        this.vendedor = vendedor;
-        this.cliente = cliente;
-        this.vehiculo = vehiculo;
-        this.mediopago = mediopago;
+    public int getAirbag() {
+        return airbag;
     }
+
+    public void setAirbag(int airbag) {
+        this.airbag = airbag;
+    }
+
+    public boolean isAireAcondicionado() {
+        return aireAcondicionado;
+    }
+
+    public void setAireAcondicionado(boolean aireAcondicionado) {
+        this.aireAcondicionado = aireAcondicionado;
+    }
+
+    public boolean isCierreCentralizado() {
+        return cierreCentralizado;
+    }
+
+    public void setCierreCentralizado(boolean cierreCentralizado) {
+        this.cierreCentralizado = cierreCentralizado;
+    }
+
+    public boolean isAlzaVidriosElectricos() {
+        return alzaVidriosElectricos;
+    }
+
+    public void setAlzaVidriosElectricos(boolean alzaVidriosElectricos) {
+        this.alzaVidriosElectricos = alzaVidriosElectricos;
+    }
+
+    public boolean isCamaraRetroceso() {
+        return camaraRetroceso;
+    }
+
+    public void setCamaraRetroceso(boolean camaraRetroceso) {
+        this.camaraRetroceso = camaraRetroceso;
+    }
+
+    public CombustibleModelo getCombustible() {
+        return Combustible;
+    }
+
+    public void setCombustible(CombustibleModelo Combustible) {
+        this.Combustible = Combustible;
+    }
+
+    public CarroceriaModelo getCarroceria() {
+        return Carroceria;
+    }
+
+    public void setCarroceria(CarroceriaModelo Carroceria) {
+        this.Carroceria = Carroceria;
+    }
+
+    public TransmisionModelo getTransmision() {
+        return Transmision;
+    }
+
+    public void setTransmision(TransmisionModelo Transmision) {
+        this.Transmision = Transmision;
+    }
+
+    public TraccionModelo getTraccion() {
+        return Traccion;
+    }
+
+    public void setTraccion(TraccionModelo Traccion) {
+        this.Traccion = Traccion;
+    }
+
+    public ModeloModelo getModelo() {
+        return Modelo;
+    }
+
+    public void setModelo(ModeloModelo Modelo) {
+        this.Modelo = Modelo;
+    }
+
+    public ArriendoModelo(String nombre, String detalle, int puerta, int pasajeros, float cilindrada, float rendidmiento, int capacidadMaletero, int airbag, boolean aireAcondicionado, boolean cierreCentralizado, boolean alzaVidriosElectricos, boolean camaraRetroceso, CombustibleModelo Combustible, CarroceriaModelo Carroceria, TransmisionModelo Transmision, TraccionModelo Traccion, ModeloModelo Modelo) {
+        this.nombre = nombre;
+        this.detalle = detalle;
+        this.puerta = puerta;
+        this.pasajeros = pasajeros;
+        this.cilindrada = cilindrada;
+        this.rendidmiento = rendidmiento;
+        this.capacidadMaletero = capacidadMaletero;
+        this.airbag = airbag;
+        this.aireAcondicionado = aireAcondicionado;
+        this.cierreCentralizado = cierreCentralizado;
+        this.alzaVidriosElectricos = alzaVidriosElectricos;
+        this.camaraRetroceso = camaraRetroceso;
+        this.Combustible = Combustible;
+        this.Carroceria = Carroceria;
+        this.Transmision = Transmision;
+        this.Traccion = Traccion;
+        this.Modelo = Modelo;
+    }
+
+    private ArriendoModelo(int idVersion, String nombre, String detalle, int puerta, int pasajeros, float cilindrada, float rendidmiento, int capacidadMaletero, int airbag, boolean aireAcondicionado, boolean cierreCentralizado, boolean alzaVidriosElectricos, boolean camaraRetroceso, CombustibleModelo Combustible, CarroceriaModelo Carroceria, TransmisionModelo Transmision, TraccionModelo Traccion, ModeloModelo Modelo) {
+        this.idVersion = idVersion;
+        this.nombre = nombre;
+        this.detalle = detalle;
+        this.puerta = puerta;
+        this.pasajeros = pasajeros;
+        this.cilindrada = cilindrada;
+        this.rendidmiento = rendidmiento;
+        this.capacidadMaletero = capacidadMaletero;
+        this.airbag = airbag;
+        this.aireAcondicionado = aireAcondicionado;
+        this.cierreCentralizado = cierreCentralizado;
+        this.alzaVidriosElectricos = alzaVidriosElectricos;
+        this.camaraRetroceso = camaraRetroceso;
+        this.Combustible = Combustible;
+        this.Carroceria = Carroceria;
+        this.Transmision = Transmision;
+        this.Traccion = Traccion;
+        this.Modelo = Modelo;
+    }
+    
+    
+
+   
+
+   
       
 }

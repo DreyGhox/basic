@@ -5,7 +5,7 @@
  */
 package emporio.webcomponet.basic.model;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -17,7 +17,7 @@ import java.util.ArrayList;
    private String tipopersona;
    private String detalle;
    
-   public static ArrayList<TipoPersonaModelo> tipop = new ArrayList<>();
+   
 
     public int getIdPersona() {
         return idPersona;
@@ -57,71 +57,7 @@ import java.util.ArrayList;
         this.detalle = detalle;
     }
     
-    public boolean nuevoTipoPersona(TipoPersonaModelo nuevoTipoPersona){
-        
-        int id = 0;
-        
-        if(!tipop.isEmpty()){
-            for(TipoPersonaModelo tipp : tipop){
-                if(tipp.getIdPersona() > id){
-                    id = tipp.getIdPersona();
-                }
-            }
-        }
-        
-        id++;
-        
-        tipop.add(new TipoPersonaModelo(id, nuevoTipoPersona.getTipopersona(), nuevoTipoPersona.getDetalle()));
-        return true;
-    }
-    
-    public TipoPersonaModelo buscarTipop(int idTipoBuscado){
-        
-        TipoPersonaModelo tipoEncontrado = null;
-        if(!tipop.isEmpty()){
-            for(TipoPersonaModelo tipp : tipop){
-                if(tipp.getIdPersona() == idTipoBuscado){
-                    tipoEncontrado = tipp;
-                }
-            }
-        }
-        return tipoEncontrado;
-    }
-    
-    public TipoPersonaModelo editarTipo(int idTipop, TipoPersonaModelo tipoEditar){
-        
-        TipoPersonaModelo tipoEditado = null;
-        
-        if(!tipop.isEmpty()){
-            for(TipoPersonaModelo tipp : tipop){
-                if(tipp.getIdPersona() == idTipop){
-                    tipp.setTipopersona(tipoEditar.getTipopersona());
-                    tipp.setDetalle(tipoEditar.getDetalle());
-                    
-                    tipoEditado = tipp;
-                }
-            }
-        }
-        
-        return tipoEditado;
-    }
-    
-    public boolean eliminarTipo(int id){
-        
-        TipoPersonaModelo tipoEliminado = null;
-        
-        if(!tipop.isEmpty()){
-            for(TipoPersonaModelo tipp : tipop){
-                if(tipp.getIdPersona() == idPersona){
-                    tipoEliminado = tipp;
-                }
-                
-            }
-        }
-        
-        tipop.remove(tipoEliminado);
-        return true;
-    }
+   
 }
 
         

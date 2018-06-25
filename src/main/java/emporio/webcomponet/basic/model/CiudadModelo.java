@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package emporio.webcomponet.basic.model;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -16,7 +16,7 @@ public class CiudadModelo {
     private String detalle;
     private RegionModelo region;
     
-    public static ArrayList<CiudadModelo> ciudad = new ArrayList<>();
+    
 
     public int getIdciudad() {
         return idciudad;
@@ -71,68 +71,5 @@ public class CiudadModelo {
     }
 
      
-    public boolean nuevaCiudad(CiudadModelo nuevaCiudad){
-        
-        int id = 0;
-        
-        if(!ciudad.isEmpty()){
-            for(CiudadModelo city : ciudad){
-                if(city.getIdciudad()>id){
-                    id = city.getIdciudad();
-                }
-            }
-        }
-        
-        id++;
-        ciudad.add(new CiudadModelo(id, nuevaCiudad.getNombreciudad(), nuevaCiudad.getDetalle()));
-        return true;
-    }
-    
-    public CiudadModelo buscarCiudad(int idCiudadBuscada){
-        
-        CiudadModelo ciudadEncontrada = null;
-        
-        if(!ciudad.isEmpty()){
-            for(CiudadModelo city : ciudad){
-                if(city.getIdciudad() == idCiudadBuscada){
-                    ciudadEncontrada = city;
-                }
-            }
-        }
-        
-        return ciudadEncontrada;
-    }
-    
-    public CiudadModelo editarCiudad(int idCiudad, CiudadModelo ciudadEditar){
-        
-        CiudadModelo ciudadEditada = null;
-        
-        if(!ciudad.isEmpty()){
-            for(CiudadModelo city : ciudad){
-                if(city.getIdciudad() == idCiudad){
-                    city.setNombreciudad(ciudadEditar.getNombreciudad());
-                    city.setDetalle(ciudadEditar.getDetalle());
-                    
-                    ciudadEditada = city;
-                }
-            }
-        }
-        
-        return ciudadEditada;
-    }
-    
-    public boolean eliminarCiudad(int id){
-        CiudadModelo ciudadEliminada = null;
-        
-        if(!ciudad.isEmpty()){
-            for(CiudadModelo city : ciudad){
-                if(city.getIdciudad() == idciudad){
-                    ciudadEliminada = city;
-                }
-            }
-        }
-        
-        ciudad.remove(ciudadEliminada);
-        return true;
-    }
+  
 }

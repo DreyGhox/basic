@@ -4,64 +4,67 @@
  * and open the template in the editor.
  */
 package emporio.webcomponet.basic.model;
+
+import java.sql.Time;
 import java.util.Date;
+
 
 /**
  *
  * @author Drako
  */
 public class DevolucionModelo {
-    private int iddevolucion;
-    private int fechadevolucion;
-    private int horadevolucion;
-     private ArriendoModelo arriendo;
+   
+    private int idDevolucion;
+    private Date fechaDevolucion;
+    private Time horaDevolucion;
+    private ArriendoModelo Arriendo;
 
-    public int getIddevolucion() {
-        return iddevolucion;
+    public int getIdDevolucion() {
+        return idDevolucion;
     }
 
-    public void setIddevolucion(int iddevolucion) {
-        this.iddevolucion = iddevolucion;
+    public void setIdDevolucion(int idDevolucion) {
+        this.idDevolucion = idDevolucion;
     }
 
-    public int getFechadevolucion() {
-        return fechadevolucion;
+    public Date getFechaDevolucion() {
+        return fechaDevolucion;
     }
 
-    public void setFechadevolucion(int fechadevolucion) {
-        this.fechadevolucion = fechadevolucion;
+    public void setFechaDevolucion(Date fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
     }
 
-    public int getHoradevolucion() {
-        return horadevolucion;
+    public Time getHoraDevolucion() {
+        return horaDevolucion;
     }
 
-    public void setHoradevolucion(int horadevolucion) {
-        this.horadevolucion = horadevolucion;
+    public void setHoraDevolucion(Time horaDevolucion) {
+        this.horaDevolucion = horaDevolucion;
     }
 
     public ArriendoModelo getArriendo() {
-        return arriendo;
+        return Arriendo;
     }
 
-    public void setArriendo(ArriendoModelo arriendo) {
-        this.arriendo = arriendo;
+    public void setArriendo(ArriendoModelo Arriendo) {
+        this.Arriendo = Arriendo;
     }
 
-    public DevolucionModelo() {
+    public DevolucionModelo(Date fechaDevolucion, Time horaDevolucion, ArriendoModelo Arriendo) {
+        this.fechaDevolucion = fechaDevolucion;
+        this.horaDevolucion = horaDevolucion;
+        this.Arriendo = Arriendo;
     }
 
-    public DevolucionModelo(int fechadevolucion, int horadevolucion, ArriendoModelo arriendo) {
-        this.fechadevolucion = fechadevolucion;
-        this.horadevolucion = horadevolucion;
-        this.arriendo = arriendo;
+    private DevolucionModelo(int idDevolucion, Date fechaDevolucion, Time horaDevolucion, ArriendoModelo Arriendo) {
+        this.idDevolucion = idDevolucion;
+        this.fechaDevolucion = fechaDevolucion;
+        this.horaDevolucion = horaDevolucion;
+        this.Arriendo = Arriendo;
     }
-
-    private DevolucionModelo(int iddevolucion, int fechadevolucion, int horadevolucion, ArriendoModelo arriendo) {
-        this.iddevolucion = iddevolucion;
-        this.fechadevolucion = fechadevolucion;
-        this.horadevolucion = horadevolucion;
-        this.arriendo = arriendo;
-    }
-     
+    
+    
+    
 }

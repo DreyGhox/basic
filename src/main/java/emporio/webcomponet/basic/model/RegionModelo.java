@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package emporio.webcomponet.basic.model;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -14,7 +14,7 @@ public class RegionModelo {
     private int idregion;
     private String nombreregion;
     private String detalle;
-    public static ArrayList<RegionModelo> region = new ArrayList<>();
+    
     
 
     public int getIdregion() {
@@ -55,73 +55,5 @@ public class RegionModelo {
         this.detalle = detalle;
     }
     
-    public boolean nuevaRegion(RegionModelo nuevaRegion){
-        
-        int id = 0;
-        
-        if(!region.isEmpty()){
-            
-            for (RegionModelo reg : region){
-                if (reg.getIdregion()> id){
-                    id = reg.getIdregion();
-                }
-            }
-        }
-        
-        id++;
-        
-        region.add(new RegionModelo(id, nuevaRegion.getNombreregion(), nuevaRegion.getDetalle()));
-        
-        return true;
-    }
-    
-    
-    public RegionModelo buscarRegion(int idRegionBuscada){
-        
-        RegionModelo regionEncontrada = null;
-        
-        if(!region.isEmpty()) {
-            for (RegionModelo reg : region) {
-                if(reg.getIdregion() == idRegionBuscada){
-                    regionEncontrada = reg;
-                }
-            }
-        }
-        
-        return regionEncontrada;
-    }
-    
-    public RegionModelo editarRegion(int idregion, RegionModelo regionEditar){
-        
-        RegionModelo regionEditada = null;
-        
-        if(!region.isEmpty()){
-            for(RegionModelo reg : region){
-                if(reg.getIdregion()== idregion){
-                    reg.setNombreregion(regionEditar.getNombreregion());
-                    reg.setDetalle(regionEditar.getDetalle());
-                    
-                    regionEditada = reg;
-                }
-            }
-        }
-        
-        return regionEditada;        
-    }
-    
-    public boolean eliminarRegion(int id){
-        
-        RegionModelo regionEliminada = null;
-        
-        if(!region.isEmpty()){
-            for(RegionModelo reg : region){
-                if(reg.getIdregion() == idregion){
-                    regionEliminada = reg;
-                }
-            }
-        }
-        region.remove(regionEliminada);
-        
-        return true;
-    }
+   
 }

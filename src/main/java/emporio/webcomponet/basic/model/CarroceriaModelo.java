@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package emporio.webcomponet.basic.model;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -15,7 +15,7 @@ public class CarroceriaModelo {
     private String nombrecarroceria;
     private String detalle;
     
-    public static ArrayList<CarroceriaModelo> carro = new ArrayList<>();
+    
 
     public CarroceriaModelo() {
     }
@@ -56,71 +56,5 @@ public class CarroceriaModelo {
         this.detalle = detalle;
     }
     
-    public boolean nuevoCarro(CarroceriaModelo nuevoCarro){
-        
-        int id = 0;
-        
-        if(!carro.isEmpty()){
-            
-            for(CarroceriaModelo car : carro) {
-                if(car.getIdcarroceria()> id){
-                    id = car.getIdcarroceria();
-                }
-            }
-        }
-        
-      id++;
-      
-      carro.add(new CarroceriaModelo(id, nuevoCarro.getNombrecarroceria(), nuevoCarro.getDetalle()));
-      return true;
-    }
     
-    public CarroceriaModelo buscaCarro(int idCarroBuscado){
-        
-        CarroceriaModelo carroEncontrado = null;
-        
-        if(!carro.isEmpty()){
-            for(CarroceriaModelo car : carro){
-                if(car.getIdcarroceria() == idCarroBuscado){
-                    carroEncontrado = car;
-                }
-            }
-        }
-        
-        return carroEncontrado;
-    }
-    
-    public CarroceriaModelo editarCarro(int idCarro, CarroceriaModelo carroEditar){
-        
-        CarroceriaModelo carroEditado = null;
-        
-        if(!carro.isEmpty()){
-            for(CarroceriaModelo car : carro){
-                if(car.getIdcarroceria() == idCarro){
-                    car.setNombrecarroceria(carroEditar.getNombrecarroceria());
-                    car.setDetalle(carroEditar.getDetalle());
-                    
-                    carroEditado = car;
-                }
-            }
-        }
-        
-        return carroEditado;
-    }
-    
-    public boolean eliminarCarro(int id){
-        
-        CarroceriaModelo carroEliminado = null;
-        
-        if(!carro.isEmpty()){
-            for(CarroceriaModelo car : carro){
-                if(car.getIdcarroceria() == idcarroceria){
-                    carroEliminado = car;
-                }
-            }
-        }
-        
-        carro.remove(carroEliminado);
-        return true;
-    }
 }

@@ -5,7 +5,7 @@
  */
 package emporio.webcomponet.basic.model;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -17,7 +17,7 @@ public class MedioPagoModel {
     private String nombremediopago;
     private String detalle;
 
-    public static ArrayList<MedioPagoModel> pago = new ArrayList<>();
+    
 
     public int getIdmediopago() {
         return idmediopago;
@@ -57,69 +57,5 @@ public class MedioPagoModel {
         this.detalle = detalle;
     }
 
-    public boolean nuevaMedioPago(MedioPagoModel nuevoMedioPago) {
-
-        int id = 0;
-
-        if (!pago.isEmpty()) {
-
-            for (MedioPagoModel medio : pago) {
-                if (medio.getIdmediopago() > id) {
-
-                }
-            }
-        }
-        id++;
-
-        pago.add(new MedioPagoModel(id, nuevoMedioPago.getNombremediopago(), nuevoMedioPago.getDetalle()));
-
-        return true;
-    }
-
-    public MedioPagoModel buscarMedioPago(int idMedioPagoBuscado) {
-
-        MedioPagoModel medioencontrado = null;
-
-        if (!pago.isEmpty()) {
-            for (MedioPagoModel medio : pago) {
-                if (medio.getIdmediopago() == idMedioPagoBuscado) {
-                }
-            }
-        }
-        return medioencontrado;
-    }
-
-    public MedioPagoModel editarMedioPago(int idmedio, MedioPagoModel mediopagoEditar) {
-
-        MedioPagoModel medioencontrado = null;
-        if (!pago.isEmpty()) {
-            for (MedioPagoModel medio : pago) {
-                if (medio.getIdmediopago() == idmedio);{
-                medio.setNombremediopago(mediopagoEditar.getNombremediopago());
-                medio.setDetalle(mediopagoEditar.getDetalle());
-
-                medioencontrado = medio;
-            }
-        }
-    
-    }
-
-    return medioencontrado;
-}
-    
-    public boolean eliminarMedioPago(int id){
-        
-         MedioPagoModel medioPagoEliminada = null;
-        
-        if(!pago.isEmpty()){
-            for(MedioPagoModel medio : pago){
-                if(medio.getIdmediopago()== idmediopago){
-                    medioPagoEliminada = medio;
-                }
-            }
-        }
-        pago.remove(medioPagoEliminada);
-        
-        return true;
-    }
+   
 }

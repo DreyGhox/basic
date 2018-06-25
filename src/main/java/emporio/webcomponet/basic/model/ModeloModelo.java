@@ -5,7 +5,7 @@
  */
 package emporio.webcomponet.basic.model;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -17,7 +17,7 @@ public class ModeloModelo {
    private String detalle;
    public MarcaModelo marca;
 
-   public static ArrayList<ModeloModelo> modelo = new ArrayList<>();
+   
     public int getIdmodelo() {
         return idmodelo;
     }
@@ -65,69 +65,5 @@ public class ModeloModelo {
         this.detalle = detalle;
         this.marca = marca;
     }
-   public boolean nuevaModelo(ModeloModelo nuevoModelo){
-        
-        int id = 0;
-        
-        if(!modelo.isEmpty()){
-            for(ModeloModelo mod : modelo){
-                if(mod.getIdmodelo()>id){
-                    id = mod.getIdmodelo();
-                }
-            }
-        }
-        
-        id++;
-        modelo.add(new ModeloModelo(id, nuevoModelo.getNombremodelo(), nuevoModelo.getDetalle(), nuevoModelo.getMarca()));
-        return true;
-    }
-    
-    public ModeloModelo buscarModelo    (int idModeloBuscado){
-        
-        ModeloModelo modeloEncontrado = null;
-        
-        if(!modelo.isEmpty()){
-            for(ModeloModelo mod : modelo){
-                if(mod.getIdmodelo() == idModeloBuscado){    
-                   modeloEncontrado = mod;
-                }
-            }
-        }
-        
-        return  modeloEncontrado;
-    }
-    
-    public ModeloModelo editarModelo(int idCiudad, ModeloModelo modeloEditar){
-        
-       ModeloModelo modeloEdita = null;
-        
-        if(!modelo.isEmpty()){
-            for(ModeloModelo mod : modelo){
-                if(mod.getIdmodelo()== idCiudad){
-                    mod.setNombremodelo(modeloEditar.getNombremodelo());
-                    mod.setDetalle(modeloEditar.getDetalle());
-                    mod.setMarca(modeloEditar.getMarca());
-                    modeloEdita = mod;
-                   
-                }
-            }
-        }
-        
-        return modeloEdita;
-    }
-    
-    public boolean eliminarModel(int id){
-        ModeloModelo modeloEliminada = null;
-        
-        if(!modelo.isEmpty()){
-            for(ModeloModelo mod : modelo){
-                if(mod.getIdmodelo()== idmodelo){
-                   modeloEliminada = mod;
-                }
-            }
-        }
-        
-        modelo.remove(modeloEliminada);
-        return true;
-    }
+  
 }

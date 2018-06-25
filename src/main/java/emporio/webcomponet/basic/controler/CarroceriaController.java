@@ -9,7 +9,6 @@ import emporio.webcomponet.basic.model.CarroceriaModelo;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

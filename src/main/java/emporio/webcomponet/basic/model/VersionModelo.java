@@ -5,7 +5,7 @@
  */
 package emporio.webcomponet.basic.model;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -31,7 +31,7 @@ public class VersionModelo {
     private TraccionModelo traccion;
     private ModeloModelo modelo;
     
-    public static ArrayList<VersionModelo> vers = new ArrayList<>();
+    
 
     public VersionModelo(int id, String nombre1, String detalle1, int airbags1, int capacidadMaletero1, float cilindrada1, int pasajero1, int puertas1, CarroceriaModelo carroceria1, CombustibleModelo combustible1, ModeloModelo modelo1, float rendimiento1, TraccionModelo traccion1, TransmisionModelo transmision1) {
     }
@@ -222,65 +222,5 @@ public class VersionModelo {
     }
     
     
-    public boolean nuevaVersion(VersionModelo nuevaVersion){
-        
-        int id = 0;
-        
-        if(!vers.isEmpty()){
-            for(VersionModelo ver : vers){
-                if(ver.getIdversion() > id){
-                    id = ver.getIdversion();
-                }
-            }
-        }
-        
-        id++;
-        
-        vers.add(new VersionModelo(id, nuevaVersion.getNombre(), nuevaVersion.getDetalle(), nuevaVersion.getAirbags(), nuevaVersion.getCapacidadMaletero(), nuevaVersion.getCilindrada(), nuevaVersion.getPasajero(), nuevaVersion.getPuertas(), nuevaVersion.getCarroceria(),nuevaVersion.getCombustible(), nuevaVersion.getModelo(), nuevaVersion.getRendimiento(), nuevaVersion.getTraccion(), nuevaVersion.getTransmision()));
-        return true;
-    }
-    
-    public VersionModelo editarVersion(int idVersion, VersionModelo versionEditar){
-        
-        VersionModelo versionEditado = null;
-        
-        if(!vers.isEmpty()){
-            for(VersionModelo ver : vers){
-                if(ver.getIdversion() == idVersion){
-                    ver.setNombre(versionEditar.getNombre());
-                    ver.setDetalle(versionEditar.getDetalle());
-                    ver.setAirbags(versionEditar.getAirbags());
-                    ver.setCapacidadMaletero(versionEditar.getCapacidadMaletero());
-                    ver.setCarroceria(versionEditar.getCarroceria());
-                    ver.setCilindrada(versionEditar.getCilindrada());
-                    ver.setCombustible(versionEditar.getCombustible());
-                    ver.setModelo(versionEditar.getModelo());
-                    ver.setPasajero(versionEditar.getPasajero());
-                    ver.setPuertas(versionEditar.getPuertas());
-                    ver.setRendimiento(versionEditar.getRendimiento());
-                    ver.setTraccion(versionEditar.getTraccion());
-                    ver.setTransmision(versionEditar.getTransmision());
-                    
-                    versionEditado = ver;
-                }
-            }
-        }
-        return versionEditado;
-    }
-    
-    public boolean eliminarVersion(int id){
-        
-        VersionModelo versionEliminado = null;
-        
-        if(!vers.isEmpty()){
-            for(VersionModelo ver : vers){
-                if(ver.getIdversion() == idversion){
-                    versionEliminado = ver;
-                }
-            }
-        }
-        
-        vers.remove(versionEliminado);
-        return true;
-    }
+   
 }
