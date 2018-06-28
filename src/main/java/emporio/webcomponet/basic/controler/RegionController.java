@@ -6,10 +6,11 @@
 package emporio.webcomponet.basic.controler;
 
 import emporio.webcomponet.basic.model.RegionModelo;
-import java.util.ArrayList;
+import emporio.webcomponet.basic.repository.RegionRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,45 +22,60 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 /**
  *
- * @author Drako
+ * @author Jhimta
  */
 @RestController
-@RequestMapping("/url")
+@RequestMapping("/Region")
 public class RegionController {
     
+       @Autowired
+       private RegionRepository regionRepository;
+       
        @GetMapping()
-    public ArrayList<RegionModelo> listar() {
-        return RegionModelo.region;
+    public Iterable<RegionModelo> listar() {
+        return regionRepository.findAll();
     }
     
     @GetMapping("/{id}")
-    public Object get(@PathVariable String id) {
+    public ResponseEntity<RegionModelo> get(@PathVariable String id) {
+        Optional<RegionModelo> aOptional = regionRepository.findById(Integer.parseInt(id));
         
-        RegionModelo regiones = new RegionModelo();
-        
-        
-        return regiones.buscarRegion(Integer.parseInt(id));
+                if(aOptional.isPresent()){
+                    RegionModelo rEncontrado = aOptional.get();
+                    return new ResponseEntity<>(rEncontrado, HttpStatus.FOUND);
+                }else{
+                    return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+                }
+       
     }
     
     @PutMapping("/{id}")
     public ResponseEntity<RegionModelo> editar(@PathVariable String id,@RequestBody RegionModelo regionEditar) {
-        RegionModelo reg = new RegionModelo();
-        
-        
-        
-        return new ResponseEntity<>(reg.editarRegion(Integer.parseInt(id), regionEditar),HttpStatus.OK);
+            Optional<RegionModelo> aOptional = regionRepository.findById(Integer.parseInt(id));
+            
+                if (aOptional.isPresent()){
+                    RegionModelo rEncontrado = aOptional.get();
+                    regionEditar.setIdregion(rEncontrado.getIdregion());
+                    regionRepository.save(regionEditar);
+                    return new ResponseEntity<>(regionEditar, HttpStatus.OK);
+                }else{
+                    return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+                }
+ 
     }
     
     @PostMapping
     public ResponseEntity<?> agregar(@RequestBody RegionModelo nuevaRegion) {
-         RegionModelo regiones = new RegionModelo();
          
-        if (regiones.nuevaRegion(nuevaRegion)){
-        return new ResponseEntity<>(HttpStatus.CREATED);
-        }else{
+        nuevaRegion = regionRepository.save(nuevaRegion);
+        Optional<RegionModelo> aOptional = regionRepository.findById(nuevaRegion.getIdregion());
         
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
+                    if (aOptional.isPresent()){
+                        RegionModelo rEncontrado = aOptional.get();
+                        return new ResponseEntity<>(rEncontrado, HttpStatus.CREATED);
+                    }else{
+                        return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+                    }
         
         
         
@@ -67,13 +83,15 @@ public class RegionController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
-        RegionModelo regiones = new RegionModelo();
-        
-        if(regiones.eliminarRegion(Integer.parseInt(id))){
-        return new ResponseEntity<>(HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-        }
+       Optional<RegionModelo> aOptional = regionRepository.findById(Integer.parseInt(id));
+       
+                if(aOptional.isPresent()){
+                    RegionModelo rEncontrado = aOptional.get();
+                    regionRepository.deleteById(rEncontrado.getIdregion());
+                    return new ResponseEntity<>(rEncontrado, HttpStatus.OK);
+                }else{
+                    return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+                }
        
         
     }
