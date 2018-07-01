@@ -9,9 +9,9 @@ package emporio.webcomponet.basic.model;
 
 /**
  *
- * @author Drako
+ * @author Jhimta
  */
-public class MedioPagoModel {
+public class MedioPagoModelo {
 
     private int idmediopago;
     private String nombremediopago;
@@ -43,15 +43,15 @@ public class MedioPagoModel {
         this.detalle = detalle;
     }
 
-    public MedioPagoModel() {
+    public MedioPagoModelo() {
     }
 
-    public MedioPagoModel(String nombremediopago, String detalle) {
+    public MedioPagoModelo(String nombremediopago, String detalle) {
         this.nombremediopago = nombremediopago;
         this.detalle = detalle;
     }
 
-    private MedioPagoModel(int idmediopago, String nombremediopago, String detalle) {
+    private MedioPagoModelo(int idmediopago, String nombremediopago, String detalle) {
         this.idmediopago = idmediopago;
         this.nombremediopago = nombremediopago;
         this.detalle = detalle;

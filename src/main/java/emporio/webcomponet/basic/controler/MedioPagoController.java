@@ -5,11 +5,12 @@
  */
 package emporio.webcomponet.basic.controler;
 
-import emporio.webcomponet.basic.model.MedioPagoModel;
-import java.util.ArrayList;
+import emporio.webcomponet.basic.model.MedioPagoModelo;
+import emporio.webcomponet.basic.repository.MedioPagoRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,52 +22,71 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 /**
  *
- * @author Drako
+ * @author Jhimta
  */
 @RestController
-@RequestMapping("/url")
+@RequestMapping("/MedioPago")
 public class MedioPagoController {
+      
+    @Autowired
+    private MedioPagoRepository medioPagoRepository;
     
     @GetMapping()
-    public ArrayList<MedioPagoModel> list() {
-        return MedioPagoModel.pago;
+    public Iterable<MedioPagoModelo> list(){
+        return medioPagoRepository.findAll();
     }
     
     @GetMapping("/{id}")
-    public Object get(@PathVariable String id) {
+    public ResponseEntity<MedioPagoModelo> get(@PathVariable String id) {
+        Optional<MedioPagoModelo> aOptional = medioPagoRepository.findById(Integer.parseInt(id));
         
-        MedioPagoModel medio = new MedioPagoModel();
+        if(aOptional.isPresent()){
+            MedioPagoModelo mpEncontrado = aOptional.get();
+            return new ResponseEntity<>(mpEncontrado, HttpStatus.FOUND);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
         
-        return medio.buscarMedioPago(Integer.parseInt(id));
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable String id, @RequestBody MedioPagoModel medioPagoEditar) {
-        MedioPagoModel medio = new MedioPagoModel();
+    public ResponseEntity<MedioPagoModelo> put(@PathVariable String id, @RequestBody MedioPagoModelo medioPagoEditar) {
+        Optional<MedioPagoModelo> aOptional = medioPagoRepository.findById(Integer.parseInt(id));
         
-        return new ResponseEntity<>(medio.editarMedioPago(Integer.parseInt(id), medioPagoEditar),HttpStatus.OK);
+        if(aOptional.isPresent()){
+            MedioPagoModelo mpEncontrado = aOptional.get();
+            medioPagoEditar.setIdmediopago(mpEncontrado.getIdmediopago());
+            medioPagoRepository.save(medioPagoEditar);
+            return new ResponseEntity<>(medioPagoEditar, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
     
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody MedioPagoModel nuevoMedioPago) {
-        MedioPagoModel medio = new MedioPagoModel();
+    public ResponseEntity<?> post(@RequestBody MedioPagoModelo nuevoMedioPago) {
+        nuevoMedioPago = medioPagoRepository.save(nuevoMedioPago);
+        Optional<MedioPagoModelo> aOptional = medioPagoRepository.findById(nuevoMedioPago.getIdmediopago());
         
-        if(medio.nuevaMedioPago(nuevoMedioPago)){
-            return new ResponseEntity<>(HttpStatus.CREATED);
+        if(aOptional.isPresent()){
+           MedioPagoModelo mpEncontrado = aOptional.get();
+           return new ResponseEntity<>(mpEncontrado, HttpStatus.CREATED);
         }else{
-        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
         }
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
-       MedioPagoModel medio = new MedioPagoModel();
-       
-       if(medio.eliminarMedioPago(Integer.parseInt(id))){
-       return new ResponseEntity<>(HttpStatus.OK);
-       }else{
-       return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-       }
+        Optional<MedioPagoModelo> aOptional = medioPagoRepository.findById(Integer.parseInt(id));
+        
+        if(aOptional.isPresent()){
+            MedioPagoModelo mpEncontrado = aOptional.get();
+            medioPagoRepository.deleteById(mpEncontrado.getIdmediopago());
+            return new ResponseEntity<>(mpEncontrado, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
     
 }
