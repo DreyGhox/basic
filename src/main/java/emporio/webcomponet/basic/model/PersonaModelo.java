@@ -5,6 +5,11 @@
  */
 package emporio.webcomponet.basic.model;
 
+import emporio.webcomponet.basic.model.CiudadModelo;
+import emporio.webcomponet.basic.model.TipoPersonaModelo;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author Drako
@@ -19,7 +24,11 @@ public class PersonaModelo {
     private String telefono;  
     private String direccion1;
     private String direccion2;
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad")
     private CiudadModelo ciudad;
+    @ManyToOne
+    @JoinColumn(name = "id_Persona")
     private TipoPersonaModelo tipopersona;
 
     public int getIdPersona() {

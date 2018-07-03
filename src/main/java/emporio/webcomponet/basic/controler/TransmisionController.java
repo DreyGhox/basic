@@ -26,7 +26,7 @@ import org.springframework.http.HttpStatus;
  * @author Drako
  */
 @RestController
-@RequestMapping("/url")
+@RequestMapping("/transmision")
 public class TransmisionController {
     @Autowired
     private TransmisionRepository transmisionRepository;
