@@ -7,17 +7,28 @@ package emporio.webcomponet.basic.model;
 
 import java.sql.Time;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table(name = "Devolucion")
 public class DevolucionModelo {
    
+    @Id
     private int idDevolucion;
     private Date fechaDevolucion;
     private Time horaDevolucion;
+    @OneToOne
+    @JoinColumn(name = "id_arriendo")
     private ArriendoModelo Arriendo;
 
     public int getIdDevolucion() {

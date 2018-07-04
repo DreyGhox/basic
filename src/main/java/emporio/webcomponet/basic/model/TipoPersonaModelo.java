@@ -5,26 +5,32 @@
  */
 package emporio.webcomponet.basic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 
 
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table (name = "TipoPersona")
  public class TipoPersonaModelo {
     
-   private int idPersona;
+   private int idTpersona;
    private String tipopersona;
    private String detalle;
    
    
 
-    public int getIdPersona() {
-        return idPersona;
+    public int getIdTpersona() {
+        return idTpersona;
     }
 
-    public void setIdPersona(int idPersona) {
-        this.idPersona = idPersona;
+    public void setIdTpersona(int idTpersona) {
+        this.idTpersona = idTpersona;
     }
 
     public String getTipopersona() {
@@ -51,8 +57,8 @@ package emporio.webcomponet.basic.model;
         this.detalle = detalle;
     }
 
-    private TipoPersonaModelo(int idPersona, String tipopersona, String detalle) {
-        this.idPersona = idPersona;
+    private TipoPersonaModelo(int idTpersona, String tipopersona, String detalle) {
+        this.idTpersona = idTpersona;
         this.tipopersona = tipopersona;
         this.detalle = detalle;
     }

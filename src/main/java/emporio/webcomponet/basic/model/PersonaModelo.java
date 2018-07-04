@@ -7,15 +7,25 @@ package emporio.webcomponet.basic.model;
 
 import emporio.webcomponet.basic.model.CiudadModelo;
 import emporio.webcomponet.basic.model.TipoPersonaModelo;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table (name = "Persona")
 public class PersonaModelo {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPersona;
     private String rut;
     private String nombre;
@@ -28,7 +38,7 @@ public class PersonaModelo {
     @JoinColumn(name = "id_ciudad")
     private CiudadModelo ciudad;
     @ManyToOne
-    @JoinColumn(name = "id_Persona")
+    @JoinColumn(name = "id_Tpersona")
     private TipoPersonaModelo tipopersona;
 
     public int getIdPersona() {

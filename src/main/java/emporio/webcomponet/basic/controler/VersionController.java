@@ -5,8 +5,8 @@
  */
 package emporio.webcomponet.basic.controler;
 
-import emporio.webcomponet.basic.model.ArriendoModelo;
-import emporio.webcomponet.basic.repository.ArriendoRepository;
+import emporio.webcomponet.basic.model.VersionModelo;
+import emporio.webcomponet.basic.repository.VersionRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,52 +24,53 @@ import org.springframework.web.bind.annotation.PutMapping;
  *
  * @author Jhimta
  */
+
 @RestController
-@RequestMapping("/Arriendo")
-public class ArriendoController {
+@RequestMapping("/Version")
+public class VersionController {
     
     @Autowired
-    private ArriendoRepository arriendoRepository;
+    private VersionRepository versionRepository;
     
     @GetMapping()
-    public Iterable<ArriendoModelo> list(){
-        return arriendoRepository.findAll();
+    public Iterable<VersionModelo> list(){
+        return versionRepository.findAll();
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<ArriendoModelo> get(@PathVariable String id) {
-        Optional<ArriendoModelo> aOptional = arriendoRepository.findById(Integer.parseInt(id));
+    public ResponseEntity<VersionModelo> get(@PathVariable String id) {
+        Optional<VersionModelo> aOptional = versionRepository.findById(Integer.parseInt(id));
         
         if(aOptional.isPresent()){
-            ArriendoModelo aEncontrado = aOptional.get();
-            return new ResponseEntity<>(aEncontrado, HttpStatus.FOUND);
+            VersionModelo veEncontrado = aOptional.get();
+            return new ResponseEntity<>(veEncontrado, HttpStatus.FOUND);
         }else{
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<ArriendoModelo> put(@PathVariable String id, @RequestBody ArriendoModelo editarArriendo) {
-        Optional<ArriendoModelo> aOptional = arriendoRepository.findById(Integer.parseInt(id));
+    public ResponseEntity<VersionModelo> put(@PathVariable String id, @RequestBody VersionModelo editarVersion) {
+        Optional<VersionModelo> aOptional = versionRepository.findById(Integer.parseInt(id));
         
         if(aOptional.isPresent()){
-            ArriendoModelo aEncontrado = aOptional.get();
-            editarArriendo.setIdArriendo(aEncontrado.getIdArriendo());
-            arriendoRepository.save(editarArriendo);
-            return new ResponseEntity<>(editarArriendo, HttpStatus.OK);
+            VersionModelo veEncontrado = aOptional.get();
+            editarVersion.setIdversion(veEncontrado.getIdversion());
+            versionRepository.save(editarVersion);
+            return new ResponseEntity<>(editarVersion, HttpStatus.OK);
         }else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
     
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody ArriendoModelo nuevoArriendo) {
-        nuevoArriendo = arriendoRepository.save(nuevoArriendo);
-        Optional<ArriendoModelo> aOptional = arriendoRepository.findById(nuevoArriendo.getIdArriendo());
+    public ResponseEntity<?> post(@RequestBody VersionModelo nuevaVersion) {
+        nuevaVersion = versionRepository.save(nuevaVersion);
+        Optional<VersionModelo> aOptional = versionRepository.findById(nuevaVersion.getIdversion());
         
         if(aOptional.isPresent()){
-            ArriendoModelo aEncontrado = aOptional.get();
-            return new ResponseEntity<>(aEncontrado, HttpStatus.CREATED);
+            VersionModelo veEncontrado = aOptional.get();
+            return new ResponseEntity<>(veEncontrado, HttpStatus.CREATED);
     }else{
             return new ResponseEntity<>(null,HttpStatus.NOT_ACCEPTABLE);
         }
@@ -77,14 +78,15 @@ public class ArriendoController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
-      Optional<ArriendoModelo> aOptional = arriendoRepository.findById(Integer.parseInt(id));
+      Optional<VersionModelo> aOptional = versionRepository.findById(Integer.parseInt(id));
         
         if(aOptional.isPresent()){
-            ArriendoModelo aEncontrado = aOptional.get();
-            arriendoRepository.deleteById(aEncontrado.getIdArriendo());
-            return new ResponseEntity<>(aEncontrado, HttpStatus.OK);
+            VersionModelo veEncontrado = aOptional.get();
+            versionRepository.deleteById(veEncontrado.getIdversion());
+            return new ResponseEntity<>(veEncontrado, HttpStatus.OK);
     }else{
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+    
 }

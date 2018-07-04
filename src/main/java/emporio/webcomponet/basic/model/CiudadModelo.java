@@ -5,15 +5,30 @@
  */
 package emporio.webcomponet.basic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table (name = "Ciudad")
 public class CiudadModelo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idciudad;
     private String nombreciudad;
     private String detalle;
+    @ManyToOne
+    @JoinColumn(name = "id_region")
     private RegionModelo region;
     
     
