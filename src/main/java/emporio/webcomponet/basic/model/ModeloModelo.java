@@ -5,13 +5,25 @@
  */
 package emporio.webcomponet.basic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table(name = "Modelo")
 public class ModeloModelo {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idmodelo;
    private String nombremodelo;
    private String detalle;

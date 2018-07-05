@@ -5,13 +5,26 @@
  */
 package emporio.webcomponet.basic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 
 /**
  *
  * @author Drako
  */
+@Entity
+@Table(name = "Version")
 public class VersionModelo {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idversion;
     private String nombre;
     private String detalle;
@@ -25,10 +38,20 @@ public class VersionModelo {
     private boolean cierreCentralizado;
     private boolean alzaVidriosElectricos;
     private boolean camaraRetroceso;
+    @OneToOne
+    @JoinColumn (name ="id_combustible")
     private CombustibleModelo combustible;
+    @OneToOne
+    @JoinColumn (name = "id_carroceria")
     private CarroceriaModelo carroceria;
+    @OneToOne
+    @JoinColumn (name = "id_transmision")
     private TransmisionModelo transmision;
+    @OneToOne
+    @JoinColumn (name = "id_traccion")
     private TraccionModelo traccion;
+    @OneToOne
+    @JoinColumn (name = "id_modelo")
     private ModeloModelo modelo;
     
     

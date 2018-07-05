@@ -54,7 +54,7 @@ public class TipoVehiculoController {
         
         if(aOptional.isPresent()){
           TipoVehiculoModelo vEncontrado = aOptional.get();
-          tipoVehiculoEditar.setIdvehiculo(vEncontrado.getIdvehiculo());
+          tipoVehiculoEditar.setIdvehiculo(vEncontrado.getIdTvehiculo());
           tipoVehiculoRepository.save(tipoVehiculoEditar);
           return new ResponseEntity<>(tipoVehiculoEditar, HttpStatus.OK);
         }else{
@@ -65,7 +65,7 @@ public class TipoVehiculoController {
     @PostMapping
     public ResponseEntity<?> post(@RequestBody TipoVehiculoModelo nuevoTipoVehiculo) {
         nuevoTipoVehiculo = tipoVehiculoRepository.save(nuevoTipoVehiculo);
-        Optional<TipoVehiculoModelo> aOptional = tipoVehiculoRepository.findById(nuevoTipoVehiculo.getIdvehiculo());
+        Optional<TipoVehiculoModelo> aOptional = tipoVehiculoRepository.findById(nuevoTipoVehiculo.getIdTvehiculo());
         
         if(aOptional.isPresent()){
            TipoVehiculoModelo vEncontrado = aOptional.get();
@@ -82,7 +82,7 @@ public class TipoVehiculoController {
         
         if(aOptional.isPresent()){
             TipoVehiculoModelo vEncontrado = aOptional.get();
-            tipoVehiculoRepository.deleteById(vEncontrado.getIdvehiculo());
+            tipoVehiculoRepository.deleteById(vEncontrado.getIdTvehiculo());
             return new ResponseEntity<>(vEncontrado, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

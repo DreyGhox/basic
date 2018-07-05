@@ -5,18 +5,35 @@
  */
 package emporio.webcomponet.basic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author Drako
  */
+
+@Entity
+@Table(name = "Vehiculo")
 public class VehiculoModelo {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVehiculo;
     private String patente;
     private int valor;
     private int ano;
     private String color;
+    @OneToOne
+    @JoinColumn(name = "id_Tvehiculo")
     private TipoVehiculoModelo tipoVehiculo;
+    @OneToOne
+    @JoinColumn(name = "id_version")
     private VersionModelo version;
 
     public VehiculoModelo() {

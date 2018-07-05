@@ -32,8 +32,14 @@ public class ArriendoModelo {
     private int idArriendo;
     private Date fechaArriendo;
     private Time horaArriendo;
+    @ManyToOne
+    @JoinColumn(name = "id_persona")
     private PersonaModelo vendedor;
+    @ManyToOne
+    @JoinColumn(name = "id_persona")
     private PersonaModelo cliente;
+    @OneToOne
+    @JoinColumn(name = "id_vehiculo")
     private VehiculoModelo vehiculo;
     
     private MedioPagoModelo medioPago;

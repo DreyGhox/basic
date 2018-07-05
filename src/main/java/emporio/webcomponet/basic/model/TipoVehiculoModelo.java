@@ -5,15 +5,25 @@
  */
 package emporio.webcomponet.basic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 
 /**
  *
  * @author Drako
  */
+@Entity
+@Table(name = "TipoVehiculo")
 public class TipoVehiculoModelo {
     
-    private int idvehiculo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idTvehiculo;
     private String tipovehiculo;
     private String detalleVehiculo;
     
@@ -27,18 +37,18 @@ public class TipoVehiculoModelo {
         this.detalleVehiculo = detalleVehiculo;
     }
     
-    private TipoVehiculoModelo(int idvehiculo, String tipovehiculo, String detalleVehiculo) {
-        this.idvehiculo = idvehiculo;
+    private TipoVehiculoModelo(int idTvehiculo, String tipovehiculo, String detalleVehiculo) {
+        this.idTvehiculo = idTvehiculo;
         this.tipovehiculo = tipovehiculo;
         this.detalleVehiculo = detalleVehiculo;
     }
 
-    public int getIdvehiculo() {
-        return idvehiculo;
+    public int getIdTvehiculo() {
+        return idTvehiculo;
     }
 
     public void setIdvehiculo(int idvehiculo) {
-        this.idvehiculo = idvehiculo;
+        this.idTvehiculo = idvehiculo;
     }
 
     public String getTipovehiculo() {
