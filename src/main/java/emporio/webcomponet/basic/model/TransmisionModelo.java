@@ -27,7 +27,6 @@ public class TransmisionModelo {
     private String nombretransmision;
     private String detalle;
     
-    public static ArrayList<TransmisionModelo> trans = new ArrayList<>();
 
     public TransmisionModelo() {
     }

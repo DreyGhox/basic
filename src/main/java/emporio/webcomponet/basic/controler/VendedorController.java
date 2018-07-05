@@ -5,8 +5,8 @@
  */
 package emporio.webcomponet.basic.controler;
 
-import emporio.webcomponet.basic.model.PersonaModelo;
-import emporio.webcomponet.basic.repository.PesonaRepository;
+import emporio.webcomponet.basic.model.VendedorModelo;
+import emporio.webcomponet.basic.repository.VendedorRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,22 +26,22 @@ import org.springframework.web.bind.annotation.PutMapping;
  * @author Drako
  */
 @RestController
-@RequestMapping("/persona")
-public class PersonaController {
+@RequestMapping("/vendedor")
+public class VendedorController {
     @Autowired
-    private PesonaRepository personaRepository;
+    private VendedorRepository vendedorRepository;
     
     @GetMapping()
-    public Iterable<PersonaModelo> list() {
-        return personaRepository.findAll();
+    public Iterable<VendedorModelo> list() {
+        return vendedorRepository.findAll();
     }
     
     @GetMapping("/{id}")
     public Object get(@PathVariable String id) {
-        Optional<PersonaModelo> aOptional = personaRepository.findById(Integer.parseInt(id));
+        Optional<VendedorModelo> aOptional = vendedorRepository.findById(Integer.parseInt(id));
                 
                if (aOptional.isPresent()){
-               PersonaModelo tEncontrado = aOptional.get();
+               VendedorModelo tEncontrado = aOptional.get();
                return new ResponseEntity<>(tEncontrado, HttpStatus.FOUND);
                }else{
                    return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -49,13 +49,13 @@ public class PersonaController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable String id, @RequestBody PersonaModelo personaEditar ) {
-        Optional<PersonaModelo> aOptional = personaRepository.findById(Integer.parseInt(id));
+    public ResponseEntity<?> put(@PathVariable String id, @RequestBody VendedorModelo personaEditar ) {
+        Optional<VendedorModelo> aOptional = vendedorRepository.findById(Integer.parseInt(id));
                 
                if (aOptional.isPresent()){
-               PersonaModelo tEncontrado = aOptional.get();
-               personaEditar.setIdPersona(tEncontrado.getIdPersona());
-               personaRepository.save(personaEditar);
+               VendedorModelo tEncontrado = aOptional.get();
+               personaEditar.setIdVendedor(tEncontrado.getIdVendedor());
+               vendedorRepository.save(personaEditar);
                return new ResponseEntity<>(personaEditar, HttpStatus.OK);
                }else{
                    return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -63,12 +63,12 @@ public class PersonaController {
     }
     
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody PersonaModelo nuevaPersona) {
-        nuevaPersona = personaRepository.save(nuevaPersona);
-         Optional<PersonaModelo> aOptional = personaRepository.findById(nuevaPersona.getIdPersona());
+    public ResponseEntity<?> post(@RequestBody VendedorModelo nuevoVendedor) {
+        nuevoVendedor = vendedorRepository.save(nuevoVendedor);
+         Optional<VendedorModelo> aOptional = vendedorRepository.findById(nuevoVendedor.getIdVendedor());
                 
                if (aOptional.isPresent()){
-               PersonaModelo tEncontrado = aOptional.get();
+               VendedorModelo tEncontrado = aOptional.get();
                return new ResponseEntity<>(tEncontrado, HttpStatus.CREATED);
                }else{
                    return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
@@ -77,11 +77,11 @@ public class PersonaController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
-      Optional<PersonaModelo> aOptional = personaRepository.findById(Integer.parseInt(id));
+      Optional<VendedorModelo> aOptional = vendedorRepository.findById(Integer.parseInt(id));
                 
                if (aOptional.isPresent()){
-               PersonaModelo tEncontrado = aOptional.get();
-               personaRepository.deleteById(tEncontrado.getIdPersona());
+               VendedorModelo tEncontrado = aOptional.get();
+               vendedorRepository.deleteById(tEncontrado.getIdVendedor());
                return new ResponseEntity<>(tEncontrado, HttpStatus.OK);
                }else{
                    return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -89,3 +89,4 @@ public class PersonaController {
     }
     
 }
+

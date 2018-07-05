@@ -24,6 +24,8 @@ public class TraccionModelo {
  private int idtraccion;
  private String nombretraccion;
  private String detalle;
+ 
+ 
     public TraccionModelo() {
     }
     

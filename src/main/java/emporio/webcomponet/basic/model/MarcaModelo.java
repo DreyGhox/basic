@@ -25,7 +25,6 @@ public class MarcaModelo {
    private String nombremarca;
    private String detalle;
    
-   public static ArrayList<MarcaModelo> marcas = new ArrayList<>();
 
     public int getIdmarca() {
         return idmarca;

@@ -33,7 +33,7 @@ public class ArriendoModelo {
     private Date fechaArriendo;
     private Time horaArriendo;
     @ManyToOne
-    @JoinColumn(name = "id_persona")
+    @JoinColumn(name = "id_vendedor")
     private PersonaModelo vendedor;
     @ManyToOne
     @JoinColumn(name = "id_persona")
@@ -41,7 +41,8 @@ public class ArriendoModelo {
     @OneToOne
     @JoinColumn(name = "id_vehiculo")
     private VehiculoModelo vehiculo;
-    
+    @ManyToOne
+    @JoinColumn(name = "id_medioPago")
     private MedioPagoModelo medioPago;
 
     public int getIdArriendo() {
